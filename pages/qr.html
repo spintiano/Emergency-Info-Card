@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QR Code | Emergency Info Card</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+
+<body data-page="qr" data-title="QR Code and Privacy">
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar-root"></aside>
+
+    <div class="main">
+      <header class="topbar" id="topbar-root"></header>
+
+      <main class="content">
+        <div class="form-error" id="page-error" role="alert"></div>
+
+        <div class="loading" id="loading">
+          <span class="spinner"></span>
+          <p>Loading...</p>
+        </div>
+
+        <div id="page-body" class="hidden">
+          <div class="grid two">
+            <section class="card" id="privacy">
+              <div class="card-head">
+                <h2><i class="fa-solid fa-lock" aria-hidden="true"></i> Privacy settings</h2>
+              </div>
+
+              <p class="muted" style="margin-bottom:8px">
+                Choose what the QR code can reveal. Everything else stays private.
+              </p>
+
+              <div id="privacy-list"></div>
+            </section>
+
+            <section class="card">
+              <div class="card-head">
+                <h2><i class="fa-solid fa-eye" aria-hidden="true"></i> Visible to anyone with the link</h2>
+              </div>
+
+              <ul class="visible-list" id="preview-list"></ul>
+
+              <p class="notice" style="margin-top:16px">
+                <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                The QR code contains a link, not your medical details. The link opens a page with only the items selected above. Items you have not saved are not shown.
+              </p>
+            </section>
+          </div>
+
+          <section class="card" id="share-off" style="margin-top:16px">
+            <div class="card-head">
+              <h2><i class="fa-solid fa-qrcode" aria-hidden="true"></i> QR code</h2>
+            </div>
+
+            <p class="muted" style="margin-bottom:16px">
+              Sharing is off. Nothing about you is publicly shared through this QR code.
+            </p>
+
+            <button type="button" class="btn btn-primary" id="enable-btn">
+              <i class="fa-solid fa-qrcode" aria-hidden="true"></i> Create QR Code
+            </button>
+          </section>
+
+          <section class="card qr-box hidden" id="share-on" style="margin-top:16px">
+            <div class="card-head">
+              <h2><i class="fa-solid fa-qrcode" aria-hidden="true"></i> Your QR code</h2>
+              <span class="pill red">Sharing on</span>
+            </div>
+
+            <canvas id="qr-canvas" aria-label="QR code for your emergency card"></canvas>
+
+            <div class="link-box">
+              <input id="share-link" type="text" readonly aria-label="Share link">
+
+              <button type="button" class="btn btn-ghost btn-sm" id="copy-btn">
+                <i class="fa-solid fa-copy" aria-hidden="true"></i> Copy
+              </button>
+            </div>
+
+            <p class="notice warn hidden" id="host-warning" style="text-align:left;margin-bottom:12px">
+              <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+              Once you share the QR code, anyone with the link can view your selected information.
+            </p>
+
+            <div class="btn-row" style="justify-content:center">
+              <button type="button" class="btn btn-primary" id="share-btn">
+                <i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Share QR Code
+              </button>
+
+              <button type="button" class="btn btn-ghost" id="download-btn">
+                <i class="fa-solid fa-download" aria-hidden="true"></i> Download
+              </button>
+            </div>
+
+            <div class="btn-row" style="justify-content:center;margin-top:10px">
+              <button type="button" class="btn btn-outline btn-sm" id="save-btn">
+                <i class="fa-solid fa-floppy-disk" aria-hidden="true"></i> Save privacy choices
+              </button>
+
+              <button type="button" class="btn btn-outline btn-sm" id="regen-btn">
+                <i class="fa-solid fa-rotate" aria-hidden="true"></i> Regenerate
+              </button>
+
+              <button type="button" class="btn btn-ghost btn-sm" id="stop-btn">
+                <i class="fa-solid fa-ban" aria-hidden="true"></i> Stop sharing
+              </button>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <nav class="bottom-nav" id="bottom-root"></nav>
+
+  <script type="module" src="../js/script.js"></script>
+</body>
+</html>

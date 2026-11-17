@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal Information | Emergency Info Card</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="personal-info" data-title="Personal Information">
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar-root"></aside>
+    <div class="main">
+      <header class="topbar" id="topbar-root"></header>
+      <main class="content">
+        <div class="form-error" id="page-error" role="alert"></div>
+        <div class="loading" id="loading"><span class="spinner"></span><p>Loading...</p></div>
+
+        <div id="page-body" class="hidden">
+          <form id="personal-form" class="card" novalidate>
+            <div class="form-error" role="alert"></div>
+
+            <div class="photo-row">
+              <div id="photo-preview"></div>
+              <div class="btn-row">
+                <label class="btn btn-outline btn-sm file-label">
+                  <i class="fa-solid fa-camera"></i> Choose photo
+                  <input type="file" id="photo-input" accept="image/*">
+                </label>
+                <button type="button" class="btn btn-ghost btn-sm hidden" id="remove-photo-btn">Remove photo</button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="fullName">Full name</label>
+              <input id="fullName" type="text" maxlength="80" autocomplete="name">
+              <small class="error" aria-live="polite"></small>
+            </div>
+
+            <div class="field">
+              <label for="dateOfBirth">Date of birth</label>
+              <input id="dateOfBirth" type="date">
+              <small class="error" aria-live="polite"></small>
+            </div>
+
+            <div class="field">
+              <label for="gender">Gender (optional)</label>
+              <select id="gender">
+                <option value="">Prefer not to say</option>
+                <option>Female</option>
+                <option>Male</option>
+                <option>Non-binary</option>
+                <option>Other</option>
+              </select>
+              <small class="error" aria-live="polite"></small>
+            </div>
+
+            <div class="field">
+              <label for="address">Home address</label>
+              <textarea id="address" maxlength="200" autocomplete="street-address"></textarea>
+              <small class="error" aria-live="polite"></small>
+            </div>
+
+            <div class="field">
+              <label for="phoneNumber">Phone number</label>
+              <input id="phoneNumber" type="tel" inputmode="tel" autocomplete="tel">
+              <small class="error" aria-live="polite"></small>
+            </div>
+
+            <div class="field">
+              <label for="email">Email address</label>
+              <input id="email" type="email" readonly>
+              <span class="hint">This is your login email. It cannot be changed here.</span>
+              <small class="error" aria-live="polite"></small>
+            </div>
+
+            <div class="btn-row">
+              <button type="submit" class="btn btn-primary" id="save-btn"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+              <button type="button" class="btn btn-ghost" id="cancel-btn">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+  </div>
+  <nav class="bottom-nav" id="bottom-root"></nav>
+  <script type="module" src="../js/script.js"></script>
+</body>
+</html>

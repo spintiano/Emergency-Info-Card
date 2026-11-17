@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emergency Mode | Emergency Info Card</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="emergency-page" data-page="emergency-mode">
+  <header class="em-top">
+    <a href="dashboard.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to Dashboard</a>
+  </header>
+
+  <main class="em-main">
+    <div class="form-error" id="page-error" role="alert"></div>
+    <div class="loading" id="loading"><span class="spinner"></span><p>Loading...</p></div>
+
+    <div id="page-body" class="hidden">
+      <span class="em-label">EMERGENCY INFORMATION</span>
+      <h1 class="em-name" id="em-name"></h1>
+
+      <section class="em-block blood">
+        <h2><i class="fa-solid fa-droplet" aria-hidden="true"></i>Blood type</h2>
+        <p id="em-blood"></p>
+      </section>
+
+      <section class="em-block">
+        <h2><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>Allergies</h2>
+        <p id="em-allergies"></p>
+      </section>
+
+      <section class="em-block">
+        <h2><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i>Medical conditions</h2>
+        <p id="em-conditions"></p>
+      </section>
+
+      <section class="em-block">
+        <h2><i class="fa-solid fa-user" aria-hidden="true"></i>Primary emergency contact</h2>
+        <p id="em-contact-name"></p>
+        <p id="em-contact-phone"></p>
+      </section>
+
+      <div class="em-actions">
+        <a class="btn btn-primary btn-xl" id="em-call" href="#"><i class="fa-solid fa-phone"></i> Call Emergency Contact</a>
+        <a class="btn btn-outline btn-xl" href="medical-info.html"><i class="fa-solid fa-notes-medical"></i> View Full Medical Information</a>
+      </div>
+
+      <p class="notice warn hidden" id="em-no-contact"><i class="fa-solid fa-circle-info"></i>No contact phone number is saved. <a href="contacts.html">Add an emergency contact</a>.</p>
+
+      <p class="notice" style="margin-top:12px"><i class="fa-solid fa-circle-info"></i>If there is an emergency, please call this number immediately.</p>
+    </div>
+  </main>
+  <script type="module" src="../js/script.js"></script>
+</body>
+</html>

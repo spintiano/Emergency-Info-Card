@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard | Emergency Info Card</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="dashboard" data-title="Dashboard">
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar-root"></aside>
+    <div class="main">
+      <header class="topbar" id="topbar-root"></header>
+      <main class="content">
+        <div class="form-error" id="page-error" role="alert"></div>
+        <div class="loading" id="loading"><span class="spinner"></span><p>Loading...</p></div>
+
+        <div id="page-body" class="hidden">
+          <section class="greeting">
+            <h2 id="greeting">Hello</h2>
+            <p class="muted">Keep your emergency details up to date.</p>
+          </section>
+
+          <a class="emergency-btn" href="emergency-mode.html">
+            <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+            <span><strong>Emergency Mode</strong><small>Show your key details fast</small></span>
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+          </a>
+
+          <div class="grid two">
+            <section class="card">
+              <div class="card-head"><h2>Your card</h2><a href="emergency-card.html">Open full card</a></div>
+              <div id="card-preview"></div>
+            </section>
+
+            <section class="card">
+              <div class="card-head"><h2>Quick access</h2></div>
+              <div class="quick-grid">
+                <a href="personal-info.html"><i class="fa-solid fa-user" aria-hidden="true"></i>Personal Information</a>
+                <a href="contacts.html"><i class="fa-solid fa-address-book" aria-hidden="true"></i>Emergency Contacts</a>
+                <a href="medical-info.html"><i class="fa-solid fa-notes-medical" aria-hidden="true"></i>Medical Information</a>
+                <a href="qr.html"><i class="fa-solid fa-qrcode" aria-hidden="true"></i>QR Code</a>
+              </div>
+            </section>
+          </div>
+
+          <section class="card" style="margin-top:16px">
+            <div class="card-head"><h2>Emergency contacts</h2><a href="contacts.html">Manage</a></div>
+            <div id="contacts-preview"></div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+  <nav class="bottom-nav" id="bottom-root"></nav>
+  <script type="module" src="../js/script.js"></script>
+</body>
+</html>

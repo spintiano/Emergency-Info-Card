@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Settings | Emergency Info Card</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="settings" data-title="Settings">
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar-root"></aside>
+    <div class="main">
+      <header class="topbar" id="topbar-root"></header>
+      <main class="content">
+        <div class="form-error" id="page-error" role="alert"></div>
+        <div class="loading" id="loading"><span class="spinner"></span><p>Loading...</p></div>
+
+        <div id="page-body" class="hidden">
+          <section class="card">
+            <a class="settings-link" href="personal-info.html">
+              <i class="fa-solid fa-user" aria-hidden="true"></i>
+              <span>Edit Profile<small>Name, photo, birth date, address, phone</small></span>
+              <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            </a>
+            <a class="settings-link" href="qr.html#privacy">
+              <i class="fa-solid fa-lock" aria-hidden="true"></i>
+              <span>Privacy Settings<small>Choose what your QR code can show</small></span>
+              <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+            </a>
+          </section>
+
+          <section class="card">
+            <div class="card-head"><h2><i class="fa-solid fa-key" aria-hidden="true"></i>Change password</h2></div>
+            <form id="password-form" novalidate>
+              <div class="form-error" role="alert"></div>
+
+              <div class="field">
+                <label for="currentPassword">Current password</label>
+                <div class="input-wrap">
+                  <input id="currentPassword" type="password" autocomplete="current-password">
+                  <button type="button" class="toggle-pass" data-target="currentPassword" aria-label="Show password"><i class="fa-solid fa-eye"></i></button>
+                </div>
+                <small class="error" aria-live="polite"></small>
+              </div>
+
+              <div class="field">
+                <label for="newPassword">New password</label>
+                <div class="input-wrap">
+                  <input id="newPassword" type="password" autocomplete="new-password">
+                  <button type="button" class="toggle-pass" data-target="newPassword" aria-label="Show password"><i class="fa-solid fa-eye"></i></button>
+                </div>
+                <span class="hint">At least 8 characters.</span>
+                <small class="error" aria-live="polite"></small>
+              </div>
+
+              <div class="field">
+                <label for="confirmNewPassword">Confirm new password</label>
+                <div class="input-wrap">
+                  <input id="confirmNewPassword" type="password" autocomplete="new-password">
+                  <button type="button" class="toggle-pass" data-target="confirmNewPassword" aria-label="Show password"><i class="fa-solid fa-eye"></i></button>
+                </div>
+                <small class="error" aria-live="polite"></small>
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="pw-btn">Change Password</button>
+            </form>
+          </section>
+
+          <section class="card">
+            <div class="card-head"><h2><i class="fa-solid fa-circle-user" aria-hidden="true"></i>Account</h2></div>
+            <p class="muted" style="margin-bottom:14px">Signed in as <strong id="account-email" style="color:var(--text)"></strong></p>
+            <button type="button" class="btn btn-ghost" data-action="logout"><i class="fa-solid fa-right-from-bracket"></i> Log Out</button>
+          </section>
+
+          <section class="card danger-zone">
+            <div class="card-head"><h2>Delete account</h2></div>
+            <p class="muted" style="margin-bottom:14px">This permanently deletes your account, contacts, medical information, and QR code. It cannot be undone.</p>
+            <button type="button" class="btn btn-outline" id="delete-btn"><i class="fa-solid fa-trash"></i> Delete My Account</button>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+  <nav class="bottom-nav" id="bottom-root"></nav>
+
+  <dialog class="modal" id="delete-dialog">
+    <form class="modal-body" id="delete-form" novalidate>
+      <h3>Delete your account?</h3>
+      <p>Enter your password to confirm. All your data will be removed.</p>
+      <div class="form-error" role="alert"></div>
+      <div class="field">
+        <label for="deletePassword">Password</label>
+        <div class="input-wrap">
+          <input id="deletePassword" type="password" autocomplete="current-password">
+          <button type="button" class="toggle-pass" data-target="deletePassword" aria-label="Show password"><i class="fa-solid fa-eye"></i></button>
+        </div>
+        <small class="error" aria-live="polite"></small>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="cancel-delete">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="confirm-delete-btn">Delete Account</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emergency Card | Emergency Info Card</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cloudflare.com"></script>
+</head>
+<body data-page="emergency-card" data-title="Emergency Card">
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar-root"></aside>
+    <div class="main">
+      <header class="topbar" id="topbar-root"></header>
+      <main class="content">
+        <div class="form-error" id="page-error" role="alert"></div>
+        <div class="loading" id="loading"><span class="spinner"></span><p>Loading...</p></div>
+
+        <div id="page-body" class="hidden">
+          <div class="grid two">
+            <section>
+              <div id="card-area"></div>
+            </section>
+
+            <section class="card qr-box no-print">
+              <div class="card-head"><h2><i class="fa-solid fa-qrcode" aria-hidden="true"></i>QR code</h2></div>
+              <div id="qr-box"></div>
+            </section>
+          </div>
+
+          <div class="btn-row" style="margin-top:16px">
+            <a class="btn btn-primary" href="personal-info.html"><i class="fa-solid fa-pen"></i> Edit Information</a>
+            <a class="btn btn-outline" href="qr.html"><i class="fa-solid fa-qrcode"></i> View QR Code</a>
+            <button type="button" class="btn btn-outline" id="share-card-btn"><i class="fa-solid fa-share-nodes"></i> Share Card</button>
+            <button type="button" class="btn btn-ghost" id="print-btn"><i class="fa-solid fa-print"></i> Print Card</button>
+          </div>
+          <p class="muted no-print" style="margin-top:12px;font-size:14px">The card on this page is private to you. Only the QR code and its link share information, and only the items you choose.</p>
+        </div>
+      </main>
+    </div>
+  </div>
+  <nav class="bottom-nav" id="bottom-root"></nav>
+  <script type="module" src="../js/script.js"></script>
+</body>
+</html>

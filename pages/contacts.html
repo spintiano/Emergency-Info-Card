@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacts | Emergency Info Card</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="contacts" data-title="Emergency Contacts">
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar-root"></aside>
+    <div class="main">
+      <header class="topbar" id="topbar-root"></header>
+      <main class="content">
+        <div class="form-error" id="page-error" role="alert"></div>
+        <div class="loading" id="loading"><span class="spinner"></span><p>Loading...</p></div>
+
+        <div id="page-body" class="hidden">
+          <div class="card-head">
+            <p class="muted">People to call if you cannot. The Primary contact appears on your card.</p>
+            <button type="button" class="btn btn-primary" id="add-contact-btn"><i class="fa-solid fa-plus"></i> Add Contact</button>
+          </div>
+          <div id="contact-list"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <nav class="bottom-nav" id="bottom-root"></nav>
+
+  <dialog class="modal" id="contact-modal">
+    <form class="modal-body" id="contact-form" novalidate>
+      <h3 id="contact-modal-title">Add contact</h3>
+      <div class="form-error" role="alert"></div>
+      <input type="hidden" id="contactId">
+
+      <div class="field">
+        <label for="contactName">Contact name</label>
+        <input id="contactName" type="text" maxlength="60" autocomplete="off">
+        <small class="error" aria-live="polite"></small>
+      </div>
+
+      <div class="field">
+        <label for="relationship">Relationship to you</label>
+        <input id="relationship" type="text" maxlength="40" placeholder="Mother, friend, teacher" autocomplete="off">
+        <small class="error" aria-live="polite"></small>
+      </div>
+
+      <div class="field">
+        <label for="phoneNumber">Phone number</label>
+        <input id="phoneNumber" type="tel" inputmode="tel" autocomplete="off" placeholder="+63 912 345 6789">
+        <small class="error" aria-live="polite"></small>
+      </div>
+
+      <div class="field">
+        <label for="priority">Priority</label>
+        <select id="priority">
+          <option value="Primary">Primary</option>
+          <option value="Secondary">Secondary</option>
+        </select>
+        <span class="hint">Only one contact can be Primary. Choosing Primary here changes the old one to Secondary.</span>
+        <small class="error" aria-live="polite"></small>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="cancel-contact">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="save-contact-btn">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Medical Info | Emergency Info Card</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="medical-info" data-title="Medical Information">
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar-root"></aside>
+    <div class="main">
+      <header class="topbar" id="topbar-root"></header>
+      <main class="content">
+        <div class="form-error" id="page-error" role="alert"></div>
+        <div class="loading" id="loading"><span class="spinner"></span><p>Loading...</p></div>
+
+        <div id="page-body" class="hidden">
+          <p class="muted" style="margin-bottom:16px">Every field is optional. Leave blank anything that does not apply. This information stays private unless you share it through the QR code.</p>
+
+          <form id="medical-form" novalidate>
+            <div class="form-error" role="alert"></div>
+
+            <section class="card">
+              <div class="card-head"><h2><i class="fa-solid fa-droplet" aria-hidden="true"></i>Blood type</h2></div>
+              <div class="field" style="margin-bottom:0">
+                <label for="bloodType">Blood type</label>
+                <select id="bloodType">
+                  <option value="">Not provided</option>
+                  <option>A+</option><option>A-</option>
+                  <option>B+</option><option>B-</option>
+                  <option>AB+</option><option>AB-</option>
+                  <option>O+</option><option>O-</option>
+                  <option>Unknown</option>
+                </select>
+                <small class="error" aria-live="polite"></small>
+              </div>
+            </section>
+
+            <section class="card">
+              <div class="card-head"><h2><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>Allergies</h2></div>
+              <div class="field" style="margin-bottom:0">
+                <label for="allergies">Known allergies</label>
+                <textarea id="allergies" maxlength="1000" placeholder="Peanuts, penicillin, latex"></textarea>
+                <small class="error" aria-live="polite"></small>
+              </div>
+            </section>
+
+            <section class="card">
+              <div class="card-head"><h2><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i>Medical conditions</h2></div>
+              <div class="field" style="margin-bottom:0">
+                <label for="medicalConditions">Existing conditions</label>
+                <textarea id="medicalConditions" maxlength="1000" placeholder="Asthma, diabetes"></textarea>
+                <small class="error" aria-live="polite"></small>
+              </div>
+            </section>
+
+            <section class="card">
+              <div class="card-head"><h2><i class="fa-solid fa-pills" aria-hidden="true"></i>Medications</h2></div>
+              <div class="field" style="margin-bottom:0">
+                <label for="medications">Current medications</label>
+                <textarea id="medications" maxlength="1000" placeholder="Name and dose"></textarea>
+                <small class="error" aria-live="polite"></small>
+              </div>
+            </section>
+
+            <section class="card">
+              <div class="card-head"><h2><i class="fa-solid fa-note-sticky" aria-hidden="true"></i>Notes and other information</h2></div>
+              <div class="field">
+                <label for="medicalNotes">Medical notes</label>
+                <textarea id="medicalNotes" maxlength="1000"></textarea>
+                <small class="error" aria-live="polite"></small>
+              </div>
+              <div class="field" style="margin-bottom:0">
+                <label for="otherInfo">Other relevant information</label>
+                <textarea id="otherInfo" maxlength="1000" placeholder="Implants, doctor name, insurance"></textarea>
+                <small class="error" aria-live="polite"></small>
+              </div>
+            </section>
+
+            <div class="btn-row" style="margin-top:16px">
+              <button type="submit" class="btn btn-primary" id="save-btn"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+  </div>
+  <nav class="bottom-nav" id="bottom-root"></nav>
+  <script type="module" src="../js/script.js"></script>
+</body>
+</html>

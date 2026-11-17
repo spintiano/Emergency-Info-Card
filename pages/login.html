@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login | Emergency Info Card</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="login">
+  <main class="auth-wrap">
+    <div class="auth-box">
+      <a class="brand" href="../index.html"><span class="med-cross"><i class="fa-solid fa-plus"></i></span><span>Emergency Info Card</span></a>
+      <h1>Welcome back</h1>
+      <p class="muted">Log in to see your emergency card.</p>
+
+      <form id="login-form" novalidate>
+        <div class="form-error" role="alert"></div>
+
+        <div class="field">
+          <label for="email">Email address</label>
+          <input id="email" type="email" autocomplete="email" inputmode="email">
+          <small class="error" aria-live="polite"></small>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="input-wrap">
+            <input id="password" type="password" autocomplete="current-password">
+            <button type="button" class="toggle-pass" data-target="password" aria-label="Show password"><i class="fa-solid fa-eye"></i></button>
+          </div>
+          <small class="error" aria-live="polite"></small>
+        </div>
+
+        <p style="margin-bottom:16px"><a href="#" id="forgot-link">Forgot password?</a></p>
+        <button class="btn btn-primary btn-block" id="submit-btn" type="submit">Login</button>
+      </form>
+
+      <p class="auth-foot">No account yet? <a href="register.html">Sign up</a></p>
+    </div>
+  </main>
+  <script type="module" src="../js/script.js"></script>
+</body>
+</html>
