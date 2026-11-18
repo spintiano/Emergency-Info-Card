@@ -6,6 +6,9 @@
     "public": ".",
     "ignore": [
       "firebase.json",
+      "firestore.rules",
+      "README.md",
+      "**/firebase-test.js",
       "**/.*",
       "**/node_modules/**"
     ]

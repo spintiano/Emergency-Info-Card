@@ -5,7 +5,7 @@ import {
   getDoc,
   doc,
   deleteDoc
-} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+} from "https://gstatic.com";
 
 async function testFirestore() {
   const user = auth.currentUser;

@@ -284,17 +284,39 @@ function resizeImageToSquare(file, size = 256) {
 
 
 
-function drawQr(canvas, text, size = 240) {
-  if (typeof window.QRCode !== "function" || !window.QRCode.CorrectLevel) {
-    const error = document.createElement("p");
-    error.className = "notice warn";
-    error.textContent = "QR library failed to load. Check your internet connection.";
-    canvas.replaceWith(error);
-    return Promise.resolve(false);
+function loadLocalQrScript() {
+  if (typeof window.QRCode === "function" && window.QRCode.CorrectLevel) {
+    return Promise.resolve();
   }
+  return new Promise((resolve, reject) => {
+    const existing = document.querySelector('script[data-qr-lib]');
+    if (existing) {
+      existing.addEventListener("load", resolve);
+      existing.addEventListener("error", reject);
+      return;
+    }
+    const s = document.createElement("script");
+    s.src = new URL("./qrcode.min.js", import.meta.url).href;
+    s.dataset.qrLib = "true";
+    s.onload = resolve;
+    s.onerror = () => reject(new Error("Could not load local js/qrcode.min.js"));
+    document.head.appendChild(s);
+  });
+}
 
+async function drawQr(canvas, text, size = 240) {
   try {
+    await loadLocalQrScript();
+
     const holder = document.createElement("div");
+    holder.id = canvas.id;
+    holder.style.display = "inline-block";
+    holder.style.background = "#FFFFFF";
+    holder.style.padding = "10px";
+    holder.style.borderRadius = "12px";
+    holder.style.border = "1px solid var(--border)";
+    holder.setAttribute("aria-label", "QR code for your emergency card");
+    canvas.replaceWith(holder);
 
     new window.QRCode(holder, {
       text: text,
@@ -305,29 +327,16 @@ function drawQr(canvas, text, size = 240) {
       correctLevel: window.QRCode.CorrectLevel.M
     });
 
-    const generatedCanvas = holder.querySelector("canvas");
-
-    if (!generatedCanvas) {
-      throw new Error("QR canvas was not generated.");
-    }
-
-    generatedCanvas.id = canvas.id;
-    generatedCanvas.setAttribute("aria-label", "QR code for your emergency card");
-    canvas.replaceWith(generatedCanvas);
-
-    return Promise.resolve(true);
+    return true;
   } catch (error) {
     console.error("QR generation failed:", error);
-
     const message = document.createElement("p");
     message.className = "notice warn";
-    message.textContent = "Could not generate the QR code. Please try again.";
+    message.textContent = "Could not generate the QR code. Check that js/qrcode.min.js exists.";
     canvas.replaceWith(message);
-
-    return Promise.resolve(false);
+    return false;
   }
 }
-
 
 
 /* ============================================================
@@ -857,19 +866,13 @@ async function initMedical(uid) {
   $("#bloodType").value = BLOOD_TYPES.includes(medical.bloodType) ? medical.bloodType : "";
   textFields.forEach((id) => { $("#" + id).value = medical[id] || ""; });
 
-  form.addEventListener("submit", async (event) => {
+    form.addEventListener("submit", async (event) => {
     event.preventDefault();
     clearErrors(form);
     let valid = true;
     textFields.forEach((id) => {
       if ($("#" + id).value.length > 1000) { fieldError(id, "Keep this under 1000 characters."); valid = false; }
     });
-      if (event.target.closest('[data-action="toggle-theme"]')) {
-    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-    applyTheme(isDark ? "light" : "dark");
-    return;
-  }
-
     if (!valid) return;
 
     const data = { userId: uid, bloodType: $("#bloodType").value };
@@ -887,7 +890,6 @@ async function initMedical(uid) {
     }
     setBusy(button, false);
   });
-  finishLoading();
 }
 
 /* ============================================================
@@ -1117,11 +1119,11 @@ async function initQr(uid) {
 
   $("#copy-btn").addEventListener("click", async () => { await copyText($("#share-link").value); toast("Link copied."); });
   $("#share-btn").addEventListener("click", () => shareLink($("#share-link").value, "Emergency Info Card"));
-  $("#download-btn").addEventListener("click", () => {
-    const canvas = $("#qr-canvas");
-    if (!canvas) return;
+      $("#download-btn").addEventListener("click", () => {
+    const c = $("#qr-canvas canvas");
+    if (!c) return;
     const a = document.createElement("a");
-    a.href = canvas.toDataURL("image/png");
+    a.href = c.toDataURL("image/png");
     a.download = "emergency-info-card-qr.png";
     a.click();
   });
