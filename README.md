@@ -25,13 +25,13 @@ A responsive web application designed to store critical medical details and emer
 
 | Landing Page | Login Page |
 | :---: | :---: |
-| <img src="assets/Index.png" alt="Landing Page" width="260"> | <img src="assets/login.png" alt="Login Page" width="260"> |
+| <img src="assets/landing.png" alt="Landing Page" width="260"> | <img src="assets/login.png" alt="Login Page" width="260"> |
 
 ### 2. User Dashboard & Full Emergency Card
 
 | User Dashboard | Full Emergency Card |
 | :---: | :---: |
-| <img src="assets/dashboard.png" alt="User Dashboard" width="260"> | <img src="assets/card.png" alt="Full Emergency Card" width="260"> |
+| <img src="assets/dashboard.png" alt="User Dashboard" width="260"> | <img src="assets/emergencycard.png" alt="Full Emergency Card" width="260"> |
 
 ### 3. Personal & Medical Information
 
@@ -43,7 +43,7 @@ A responsive web application designed to store critical medical details and emer
 
 | Emergency Contacts | QR Code & Privacy | Account Settings |
 | :---: | :---: | :---: |
-| <img src="assets/contact.png" alt="Emergency Contacts" width="230"> | <img src="assets/qr.png" alt="QR Code and Privacy" width="230"> | <img src="assets/settings.png" alt="Account Settings" width="230"> |
+| <img src="assets/emergencycontact.png" alt="Emergency Contacts" width="230"> | <img src="assets/qrcode.png" alt="QR Code and Privacy" width="230"> | <img src="assets/settings.png" alt="Account Settings" width="230"> |
 
 ---
 
