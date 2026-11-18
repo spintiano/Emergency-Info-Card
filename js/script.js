@@ -866,7 +866,7 @@ async function initMedical(uid) {
   $("#bloodType").value = BLOOD_TYPES.includes(medical.bloodType) ? medical.bloodType : "";
   textFields.forEach((id) => { $("#" + id).value = medical[id] || ""; });
 
-    form.addEventListener("submit", async (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
     clearErrors(form);
     let valid = true;
@@ -890,6 +890,7 @@ async function initMedical(uid) {
     }
     setBusy(button, false);
   });
+  finishLoading();
 }
 
 /* ============================================================
