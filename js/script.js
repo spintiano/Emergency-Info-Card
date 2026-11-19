@@ -1314,3 +1314,10 @@ if (!PROTECTED_PAGES[page] && page !== "emergency-mode") {
   btn.innerHTML = `<i class="fa-solid ${isDark ? "fa-sun" : "fa-moon"}"></i>`;
   document.body.appendChild(btn);
 }
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch((err) => {
+      console.error("Service Worker registration failed:", err);
+    });
+  });
+}
