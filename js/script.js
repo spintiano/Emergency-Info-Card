@@ -1,4 +1,3 @@
-
 import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
@@ -29,16 +28,12 @@ import {
 
 import { auth, db, firebaseConfig } from "./firebase-config.js";
 
-/* ============================================================
-   Setup
-   ============================================================ */
+/*Setup*/
 
 const configReady = true;
 
 const page = document.body.dataset.page;
-/* ============================================================
-   Theme (Light / Dark Mode)
-   ============================================================ */
+/*Theme (Light / Dark Mode)*/
 function getPreferredTheme() {
   const saved = localStorage.getItem("theme");
   if (saved === "dark" || saved === "light") return saved;
@@ -89,9 +84,7 @@ const PRIVACY_FIELDS = [
   ["contactPhone", "Primary contact phone number"]
 ];
 
-/* ============================================================
-   Small helpers
-   ============================================================ */
+/*Small helpers*/
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
@@ -339,9 +332,7 @@ async function drawQr(canvas, text, size = 240) {
 }
 
 
-/* ============================================================
-   Data access
-   ============================================================ */
+/*Data access*/
 
 async function getUserDoc(uid) {
   const snap = await getDoc(doc(db, "Users", uid));
@@ -370,7 +361,6 @@ function primaryContact(contacts) {
   return contacts.find((c) => c.priority === "Primary") || contacts[0] || null;
 }
 
-// Card data for the signed-in user. Empty strings show as "Not provided".
 function ownCardData(user, medical, contacts) {
   const primary = primaryContact(contacts);
   return {
@@ -386,8 +376,6 @@ function ownCardData(user, medical, contacts) {
   };
 }
 
-
-// Builds the data that anyone with the QR link can read. Only fields the owner switched on are included.
 function buildSharedData(user, medical, contacts, privacy) {
   const p = { ...DEFAULT_PRIVACY, ...(privacy || {}) };
   const primary = primaryContact(contacts);
@@ -420,7 +408,6 @@ async function writeSharedCard(uid, token, privacy) {
   });
 }
 
-// Keeps the shared card in step with saved changes. Does nothing when sharing is off.
 async function syncSharedCard(uid) {
   try {
     const user = await getUserDoc(uid);
@@ -441,9 +428,7 @@ function shareUrl(token) {
   return new URL("share.html?t=" + token, location.href).href;
 }
 
-/* ============================================================
-   Shared page pieces
-   ============================================================ */
+/*Shared page pieces*/
 
 const NAV_KEY = {
   dashboard: "home",
@@ -519,7 +504,6 @@ function infoRow(icon, label, value, hideMissing) {
   </div>`;
 }
 
-// Draws the card. Fields that are undefined are left out. Empty strings show "Not provided" unless hideMissing is set.
 function cardHTML(d, { compact = false, hideMissing = false } = {}) {
   const photo = safeImage(d.profileImage);
   const avatar = photo
@@ -561,9 +545,7 @@ function cardHTML(d, { compact = false, hideMissing = false } = {}) {
   </div>`;
 }
 
-/* ============================================================
-   Welcome, login, register
-   ============================================================ */
+/*Welcome, login, register*/
 
 function initLogin() {
   const form = $("#login-form");
@@ -653,9 +635,7 @@ function initRegister() {
   });
 }
 
-/* ============================================================
-   Dashboard
-   ============================================================ */
+/*Dashboard*/
 
 async function initDashboard(uid) {
   const [user, medical, contacts] = await loadAll(uid);
@@ -678,9 +658,7 @@ async function initDashboard(uid) {
   finishLoading();
 }
 
-/* ============================================================
-   Emergency card page
-   ============================================================ */
+/*Emergency card page*/
 
 async function initEmergencyCard(uid) {
   const [user, medical, contacts] = await loadAll(uid);
@@ -709,9 +687,7 @@ async function initEmergencyCard(uid) {
   finishLoading();
 }
 
-/* ============================================================
-   Emergency mode
-   ============================================================ */
+/*Emergency mode*/
 
 async function initEmergencyMode(uid) {
   const [user, medical, contacts] = await loadAll(uid);
@@ -738,9 +714,7 @@ async function initEmergencyMode(uid) {
   finishLoading();
 }
 
-/* ============================================================
-   Contacts
-   ============================================================ */
+/*Contacts*/
 
 async function initContacts(uid) {
   let contacts = await getContacts(uid);
@@ -853,9 +827,7 @@ async function initContacts(uid) {
   finishLoading();
 }
 
-/* ============================================================
-   Medical information
-   ============================================================ */
+/*Medical information*/
 
 async function initMedical(uid) {
   const [user, medical] = await Promise.all([getUserDoc(uid), getMedical(uid)]);
@@ -893,9 +865,7 @@ async function initMedical(uid) {
   finishLoading();
 }
 
-/* ============================================================
-   Personal information
-   ============================================================ */
+/*Personal information*/
 
 async function initPersonal(uid) {
   const user = await getUserDoc(uid);
@@ -971,9 +941,7 @@ async function initPersonal(uid) {
   finishLoading();
 }
 
-/* ============================================================
-   QR code and privacy
-   ============================================================ */
+/*QR code and privacy*/
 
 async function initQr(uid) {
   let [user, medical, contacts] = await loadAll(uid);
@@ -1134,9 +1102,7 @@ async function initQr(uid) {
   finishLoading();
 }
 
-/* ============================================================
-   Settings
-   ============================================================ */
+/*Settings*/
 
 async function initSettings(uid) {
   const user = await getUserDoc(uid);
@@ -1214,9 +1180,7 @@ async function initSettings(uid) {
   finishLoading();
 }
 
-/* ============================================================
-   Public shared card (opened from the QR code, no login)
-   ============================================================ */
+/*Public shared card*/
 
 async function initSharePage() {
   const fail = (message) => {
@@ -1244,9 +1208,7 @@ async function initSharePage() {
   }
 }
 
-/* ============================================================
-   Start
-   ============================================================ */
+/*Start*/
 
 document.addEventListener("click", async (event) => {
   if (event.target.closest('[data-action="toggle-theme"]')) {

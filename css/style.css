@@ -46,7 +46,7 @@ img { max-width: 100%; }
 
 :focus-visible { outline: 3px solid #1565C0; outline-offset: 2px; }
 
-/* ---------- Layout ---------- */
+/*Layout*/
 .app-shell { display: flex; min-height: 100vh; }
 
 .sidebar {
@@ -167,7 +167,7 @@ img { max-width: 100%; }
   .top-actions .btn span { display: none; }
 }
 
-/* ---------- Components ---------- */
+/*Components*/
 .card {
   background: var(--white);
   border-radius: var(--radius);
@@ -237,7 +237,7 @@ img { max-width: 100%; }
 }
 .med-cross.large { width: 72px; height: 72px; font-size: 34px; }
 
-/* ---------- Forms ---------- */
+/*Forms*/
 .field { margin-bottom: 16px; }
 .field label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 15px; }
 .field .hint { color: var(--muted); font-size: 13px; margin-top: 4px; display: block; }
@@ -305,7 +305,7 @@ img { max-width: 100%; }
   text-align: center;
 }
 
-/* ---------- Auth and welcome ---------- */
+/*Auth and welcome*/
 .auth-wrap, .welcome-wrap {
   min-height: 100vh;
   display: flex;
@@ -331,7 +331,7 @@ img { max-width: 100%; }
 .welcome-points li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; }
 .welcome-points i { color: var(--red); margin-top: 4px; width: 18px; text-align: center; }
 
-/* ---------- Dashboard ---------- */
+/*Dashboard*/
 .greeting h2 { font-size: 24px; }
 .greeting { margin-bottom: 16px; }
 
@@ -371,7 +371,7 @@ img { max-width: 100%; }
 .quick-grid a i { font-size: 24px; color: var(--red); }
 .quick-grid a:hover { background: var(--red-soft); }
 
-/* ---------- Emergency card ---------- */
+/*Emergency card*/
 .id-card {
   background: var(--white);
   border: 2px solid var(--red);
@@ -414,7 +414,7 @@ img { max-width: 100%; }
 .qr-box { text-align: center; }
 .qr-box canvas { max-width: 100%; height: auto !important; border: 1px solid var(--border); border-radius: 12px; padding: 8px; background: #fff; }
 
-/* ---------- Contacts ---------- */
+/*Contacts*/
 .contact-card { display: flex; gap: 14px; align-items: flex-start; }
 .contact-card + .contact-card { margin-top: 12px; }
 .contact-icon {
@@ -443,13 +443,13 @@ img { max-width: 100%; }
 .mini-contact:first-child { border-top: 0; }
 .mini-contact .contact-info strong { display: block; }
 
-/* ---------- Medical and personal pages ---------- */
+/*Medical and personal pages*/
 .photo-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
 .photo-row .avatar-lg { width: 96px; height: 96px; font-size: 40px; }
 .file-label { cursor: pointer; }
 .file-label input { display: none; }
 
-/* ---------- Privacy switches ---------- */
+/*Privacy switches*/
 .switch-row {
   display: flex;
   align-items: center;
@@ -494,7 +494,7 @@ input.switch:checked::after { left: 23px; }
 .link-box { display: flex; gap: 8px; margin: 12px 0; }
 .link-box input { flex: 1; min-width: 0; padding: 10px 12px; border: 1.5px solid var(--border); border-radius: 12px; font-size: 14px; background: var(--gray); }
 
-/* ---------- Settings ---------- */
+/*Settings*/
 .settings-link {
   display: flex;
   align-items: center;
@@ -510,7 +510,7 @@ input.switch:checked::after { left: 23px; }
 .settings-link small { display: block; font-weight: 400; color: var(--muted); }
 .danger-zone { border: 1.5px solid #F3B9B9; }
 
-/* ---------- Dialog ---------- */
+/*Dialog*/
 dialog.modal {
   border: 0;
   border-radius: var(--radius);
@@ -524,7 +524,7 @@ dialog.modal::backdrop { background: rgba(0, 0, 0, 0.45); }
 .modal-body > p { color: var(--muted); margin-bottom: 18px; }
 .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 8px; }
 
-/* ---------- Loading and toast ---------- */
+/*Loading and toast*/
 .loading { text-align: center; padding: 48px 12px; color: var(--muted); }
 .spinner {
   display: inline-block;
@@ -562,7 +562,7 @@ dialog.modal::backdrop { background: rgba(0, 0, 0, 0.45); }
 .toast.success { background: var(--ok); }
 .toast.error { background: var(--red-dark); }
 
-/* ---------- Emergency mode ---------- */
+/*Emergency mode*/
 body.emergency-page { background: var(--white); }
 .em-top { padding: 14px 16px; border-bottom: 1px solid var(--border); }
 .em-top a { text-decoration: none; font-weight: 600; font-size: 17px; }
@@ -576,14 +576,14 @@ body.emergency-page { background: var(--white); }
 .em-block.blood p { font-size: 40px; color: var(--red); }
 .em-actions { display: grid; gap: 12px; margin: 20px 0; }
 
-/* ---------- Print ---------- */
+/*Print*/
 @media print {
   .sidebar, .bottom-nav, .topbar, .btn-row, .no-print, .toast-stack, .banner { display: none !important; }
   body { background: #fff; }
   .main { padding: 0; }
   .card { box-shadow: none; padding: 0; }
 }
-/* ---------- Dark Mode Adjustments ---------- */
+/*Dark Mode Adjustments*/
 [data-theme="dark"] .btn-primary,
 [data-theme="dark"] .emergency-btn,
 [data-theme="dark"] .em-label,
@@ -611,12 +611,10 @@ body.emergency-page { background: var(--white); }
   color: var(--text);
 }
 
-/* Keep QR code background pure white so phone cameras can scan it easily */
 [data-theme="dark"] .qr-box canvas {
   background: #FFFFFF;
 }
 
-/* Floating theme button for public pages (login, register, welcome, share) */
 .floating-theme-btn {
   position: fixed;
   top: 16px;

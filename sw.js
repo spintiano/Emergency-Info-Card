@@ -1,3 +1,4 @@
+//Curios Lang sa part na this HAHAHA
 const CACHE_NAME = "emergency-card-v1";
 const ASSETS_TO_CACHE = [
   "/",
